@@ -1,0 +1,26 @@
+{
+  "name": "iot_noob",
+  "version": "1.0.0",
+  "description": "Simple server to my first IoT experiment (Controlling servo through android app, nodejs server and arduino client)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiganmeGiovanni/IoTNoobServer.git"
+  },
+  "keywords": [
+    "IoT",
+    "Servo",
+    "Arduino",
+    "Android",
+    "NodeJS"
+  ],
+  "author": "DiganmeGiovanni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiganmeGiovanni/IoTNoobServer/issues"
+  },
+  "homepage": "https://github.com/DiganmeGiovanni/IoTNoobServer#readme"
+}
