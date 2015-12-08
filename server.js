@@ -18,7 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ====================================================== //
 // == Custom variables
 // ====================================================== //
-var servoTurningLeft = false;
+var SERVO_CLOCKWISE    = "turnClockwise"
+var SERVO_NO_CLOCKWISE = "turnNoclockwise"
+var SERVO_STOP         = "stop"
+var servoStatus        = SERVO_STOP // Stopped by default
 
 
 // ====================================================== //
@@ -30,17 +33,43 @@ app.get("/api/test", function (req, res) {
   res.send("Hello world\n")
 })
 
+app.get("/api/servo/turnClockwise", function (req, res) {
+  console.log("Configuring servo for turn clockwise")
+  servoStatus = SERVO_CLOCKWISE
+
+  res.status = 200
+  res.send("Turning like the clock")
+})
+
+app.get("/api/servo/turnNoClockwise", function (req, res) {
+  console.log("Configuring servo for turn counterclockwise")
+  servoStatus = SERVO_NO_CLOCKWISE
+
+  res.status = 200
+  res.send("Turning counterclockwise")
+})
+
+app.get("/api/servo/stop", function (req, res) {
+  console.log("Configuring the servo to stop")
+  servoStatus = SERVO_STOP
+
+  res.status = 200
+  res.send("Stoping the servo")
+})
+
 app.get("/api/servoDirection", function (req, res) {
   res.status = 200;
 
-  if (servoTurningLeft) {
+  console.log("Sending: " + servoStatus)
+  if(servoStatus === SERVO_CLOCKWISE) {
     res.send("@1")
   }
-  else {
+  else if(servoStatus === SERVO_NO_CLOCKWISE) {
     res.send("@0")
   }
-
-  //servoTurningLeft = !servoTurningLeft;
+  else {
+    res.send("@2")
+  }
 })
 
 
